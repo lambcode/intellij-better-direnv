@@ -53,7 +53,7 @@ public class GolandRunConfigurationExtension extends GoRunConfigurationExtension
     @Override
     protected void patchCommandLine(@NotNull GoRunConfigurationBase<?> configuration, @Nullable RunnerSettings runnerSettings, @NotNull TargetedCommandLineBuilder cmdLine, @NotNull String runnerId, @NotNull GoRunningState<? extends GoRunConfigurationBase<?>> state, @NotNull GoRunningState.CommandLineType commandLineType) throws ExecutionException {
         DirenvSettings direnvSettings = configuration.getCopyableUserData(RunConfigSettingsEditor.USER_DATA_KEY);
-        Map<String, String> newEnv = RunConfigSettingsEditor.collectEnv(direnvSettings, configuration.getWorkingDirectory());
+        Map<String, String> newEnv = RunConfigSettingsEditor.collectEnv(direnvSettings, configuration.getProject().getBasePath());
 
         for (Map.Entry<String, String> set : newEnv.entrySet()) {
             cmdLine.addEnvironmentVariable(set.getKey(), set.getValue());

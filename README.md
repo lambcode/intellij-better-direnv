@@ -35,6 +35,17 @@ by request.
   manually using
   <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
 
+## Building with docker
+```
+docker run --rm -it -v `pwd`:/tmp/work openjdk:11 sh
+
+## Inside the container
+cd /tmp/work
+./gradlew build
+
+## Once complete the plugin will be in the build/distributions directory
+```
+
 ---
 Plugin based on the [IntelliJ Platform Plugin Template][template].
 
